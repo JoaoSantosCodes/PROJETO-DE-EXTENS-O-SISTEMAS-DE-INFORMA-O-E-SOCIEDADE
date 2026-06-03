@@ -181,9 +181,14 @@ app.get('*', (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor ConectaInclusão rodando na porta ${PORT}`);
-    if (!useDb) {
-        console.log('📌 Rodando em MODO SIMULAÇÃO sem banco PostgreSQL real.');
-    }
-});
+if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`🚀 Servidor ConectaInclusão rodando na porta ${PORT}`);
+        if (!useDb) {
+            console.log('📌 Rodando em MODO SIMULAÇÃO sem banco PostgreSQL real.');
+        }
+    });
+}
+
+// Export app for Vercel Serverless Function
+module.exports = app;
