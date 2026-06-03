@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma Digital de Capacitação e Conexão para inclusão digital e inserção no mercado de trabalho de refugiados, indígenas e minorias.">
+    <title>ConectaInclusão - Capacitação e Oportunidades</title>
+    <!-- Google Fonts: Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS File -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="glass-nav" id="main-header">
+        <div class="nav-container">
+            <a href="#" class="logo" id="logo-brand">
+                <span class="gradient-text"><i class="fa-solid fa-graduation-cap"></i> ConectaInclusão</span>
+            </a>
+            <nav class="nav-links" id="nav-menu">
+                <a href="#inicio" class="active"><i class="fa-solid fa-house"></i> Início</a>
+                <a href="#capacitacao"><i class="fa-solid fa-book-open"></i> Capacitação</a>
+                <a href="#gerador-curriculo"><i class="fa-solid fa-file-invoice"></i> Criar Currículo</a>
+                <a href="#vagas"><i class="fa-solid fa-briefcase"></i> Vagas Inclusivas</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-label="Alternar modo escuro/claro" title="Alternar Modo Escuro/Claro">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="btn btn-primary btn-nav-cta" onclick="location.href='#gerador-curriculo'">Começar Agora</button>
+                <button id="mobile-menu-toggle" class="btn-icon mobile-only" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <button id="mobile-drawer-close" class="btn-icon"><i class="fa-solid fa-xmark"></i></button>
+        <nav class="drawer-links">
+            <a href="#inicio" onclick="closeDrawer()"><i class="fa-solid fa-house"></i> Início</a>
+            <a href="#capacitacao" onclick="closeDrawer()"><i class="fa-solid fa-book-open"></i> Capacitação</a>
+            <a href="#gerador-curriculo" onclick="closeDrawer()"><i class="fa-solid fa-file-invoice"></i> Criar Currículo</a>
+            <a href="#vagas" onclick="closeDrawer()"><i class="fa-solid fa-briefcase"></i> Vagas Inclusivas</a>
+        </nav>
+    </div>
+
+    <!-- Main Content Container -->
+    <main id="app-container">
+
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-section">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="badge" id="hero-badge"><i class="fa-solid fa-star"></i> Tecnologia Social e Ética</span>
+                    <h1 class="hero-title" id="main-title">A tecnologia abrindo portas para a <span class="gradient-text">diversidade</span>.</h1>
+                    <p class="hero-subtitle">
+                        Uma ponte digital para letramento básico, geração de currículos profissionais e conexão de refugiados, povos tradicionais e minorias com empresas que valorizam a inclusão social.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#gerador-curriculo" class="btn btn-primary btn-lg"><i class="fa-solid fa-magic-wand-sparkles"></i> Criar Meu Currículo</a>
+                        <a href="#capacitacao" class="btn btn-secondary btn-lg"><i class="fa-solid fa-play"></i> Oficinas Digitais</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-num">25+</span>
+                            <span class="stat-label">Capacitados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">80%+</span>
+                            <span class="stat-label">Taxa de Sucesso</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">3+</span>
+                            <span class="stat-label">Empresas Aliadas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="glass-card visual-card">
+                        <div class="card-header-bar">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="visual-content">
+                            <div class="loading-bar-animated"></div>
+                            <h3>Inclusão Digital Ativa</h3>
+                            <p>Sistemas de Informação a serviço da sociedade e emancipação comunitária.</p>
+                            <div class="avatar-group-visual">
+                                <div class="avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+                                <div class="avatar"><i class="fa-solid fa-user-ninja"></i></div>
+                                <div class="avatar"><i class="fa-solid fa-user-graduate"></i></div>
+                                <span class="avatar-more">+25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Letramento Digital / Capacitação Section -->
+        <section id="capacitacao" class="section-padding container">
+            <div class="section-header">
+                <span class="badge"><i class="fa-solid fa-graduation-cap"></i> Desenvolvimento</span>
+                <h2>Letramento Digital e Tecnologia Social</h2>
+                <p>Aprenda as habilidades básicas e fundamentais exigidas no ambiente de trabalho moderno.</p>
+            </div>
+            
+            <div class="courses-grid" id="courses-list">
+                <!-- Course Card 1 -->
+                <div class="glass-card course-card">
+                    <div class="course-icon"><i class="fa-solid fa-computer"></i></div>
+                    <h3>Informática e Navegação Básica</h3>
+                    <p>Aprenda a operar computadores, gerenciar arquivos no Windows/Linux, enviar e-mails de forma profissional e navegar com segurança na internet.</p>
+                    <div class="course-footer">
+                        <span class="course-duration"><i class="fa-regular fa-clock"></i> 4 Horas</span>
+                        <span class="course-level">Iniciante</span>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="glass-card course-card">
+                    <div class="course-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Segurança Digital e Privacidade</h3>
+                    <p>Proteja seus dados contra golpes na internet. Aprenda a criar senhas seguras, reconhecer e-mails de phishing e navegar sem expor dados confidenciais.</p>
+                    <div class="course-footer">
+                        <span class="course-duration"><i class="fa-regular fa-clock"></i> 2 Horas</span>
+                        <span class="course-level">Iniciante</span>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="glass-card course-card">
+                    <div class="course-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>IA e Produtividade no Trabalho</h3>
+                    <p>Entenda como usar ferramentas de Inteligência Artificial para facilitar a criação de textos, tradução de idiomas (útil para refugiados) e planejamento diário.</p>
+                    <div class="course-footer">
+                        <span class="course-duration"><i class="fa-regular fa-clock"></i> 3 Horas</span>
+                        <span class="course-level">Intermediário</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Builder Section -->
+        <section id="gerador-curriculo" class="section-padding dark-section-bg">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="badge"><i class="fa-solid fa-magic-wand-sparkles"></i> Simplicidade</span>
+                    <h2>Gerador de Currículos Profissionais</h2>
+                    <p>Crie um currículo estruturado de forma rápida e exporte em PDF formatado.</p>
+                </div>
+
+                <div class="resume-builder-grid">
+                    <!-- Form Container -->
+                    <div class="glass-card form-container">
+                        <h3 class="form-title"><i class="fa-solid fa-pen-to-square"></i> Preencha seus Dados</h3>
+                        <form id="cv-form">
+                            <!-- Personal Info -->
+                            <div class="form-section">
+                                <h4><i class="fa-solid fa-user"></i> Informações Pessoais</h4>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="cv-nome">Nome Completo</label>
+                                        <input type="text" id="cv-nome" placeholder="Ex: João da Silva" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="cv-cargo">Objetivo Profissional (Cargo)</label>
+                                        <input type="text" id="cv-cargo" placeholder="Ex: Auxiliar Administrativo" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="cv-email">E-mail</label>
+                                        <input type="email" id="cv-email" placeholder="Ex: joao@email.com" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="cv-telefone">Telefone</label>
+                                        <input type="tel" id="cv-telefone" placeholder="Ex: (11) 99999-9999" required>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="cv-endereco">Endereço/Cidade</label>
+                                    <input type="text" id="cv-endereco" placeholder="Ex: Carapicuíba - SP" required>
+                                    <small>Refugiados ou indígenas podem incluir nacionalidade/etnia opcionalmente se desejado.</small>
+                                </div>
+                            </div>
+
+                            <!-- Summary -->
+                            <div class="form-section">
+                                <h4><i class="fa-solid fa-circle-info"></i> Resumo Profissional</h4>
+                                <div class="input-group">
+                                    <label for="cv-resumo">Breve texto sobre você e suas qualificações</label>
+                                    <textarea id="cv-resumo" rows="3" placeholder="Fale um pouco sobre sua trajetória profissional, suas principais qualidades e metas." required></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Education -->
+                            <div class="form-section">
+                                <h4><i class="fa-solid fa-graduation-cap"></i> Formação Acadêmica</h4>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="cv-curso">Curso / Escolaridade</label>
+                                        <input type="text" id="cv-curso" placeholder="Ex: Ensino Médio Concluído" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="cv-instituicao">Instituição / Escola</label>
+                                        <input type="text" id="cv-instituicao" placeholder="Ex: Escola Estadual" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="cv-ano">Ano de Conclusão</label>
+                                        <input type="text" id="cv-ano" placeholder="Ex: 2024" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Work Experience -->
+                            <div class="form-section">
+                                <h4><i class="fa-solid fa-briefcase"></i> Experiência Profissional</h4>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="cv-exp-cargo">Cargo</label>
+                                        <input type="text" id="cv-exp-cargo" placeholder="Ex: Atendente de Loja">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="cv-exp-empresa">Empresa</label>
+                                        <input type="text" id="cv-exp-empresa" placeholder="Ex: Supermercado Local">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label for="cv-exp-periodo">Período</label>
+                                        <input type="text" id="cv-exp-periodo" placeholder="Ex: 2022 - 2024 ou Atual">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="cv-exp-desc">Descrição das atividades</label>
+                                    <textarea id="cv-exp-desc" rows="2" placeholder="Descreva brevemente o que você fazia nessa vaga."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Skills -->
+                            <div class="form-section">
+                                <h4><i class="fa-solid fa-screwdriver-wrench"></i> Habilidades e Idiomas</h4>
+                                <div class="input-group">
+                                    <label for="cv-habilidades">Habilidades (Separe por vírgulas)</label>
+                                    <input type="text" id="cv-habilidades" placeholder="Ex: Informática Básica, Pacote Office, Atendimento ao Cliente, Espanhol Avançado" required>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full-width" id="btn-generate-cv">
+                                <i class="fa-solid fa-rotate"></i> Gerar Visualização do Currículo
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Live Preview Container -->
+                    <div class="preview-outer-container">
+                        <div class="preview-actions">
+                            <h3><i class="fa-regular fa-eye"></i> Visualização</h3>
+                            <button id="btn-print-cv" class="btn btn-secondary btn-sm" disabled>
+                                <i class="fa-solid fa-print"></i> Imprimir / Salvar PDF
+                            </button>
+                        </div>
+
+                        <!-- Renders the CV A4 style sheet -->
+                        <div class="glass-card cv-a4-preview" id="cv-preview-page">
+                            <div class="empty-preview-message" id="empty-preview-msg">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <p>Preencha os dados e clique em "Gerar Visualização" para renderizar seu currículo aqui.</p>
+                            </div>
+                            <div id="cv-preview-content" class="hidden">
+                                <!-- Generated Dynamic Content goes here -->
+                                <div class="cv-header">
+                                    <h2 id="prev-nome">Nome Completo</h2>
+                                    <p class="cv-subtitle" id="prev-cargo">Objetivo Profissional</p>
+                                    <div class="cv-contact-info">
+                                        <span id="prev-email"><i class="fa-solid fa-envelope"></i> email@exemplo.com</span>
+                                        <span id="prev-telefone"><i class="fa-solid fa-phone"></i> (11) 99999-9999</span>
+                                        <span id="prev-endereco"><i class="fa-solid fa-location-dot"></i> Endereço, Cidade</span>
+                                    </div>
+                                </div>
+                                <hr class="cv-divider">
+                                <div class="cv-body">
+                                    <div class="cv-section">
+                                        <h3><i class="fa-solid fa-circle-info"></i> Resumo Profissional</h3>
+                                        <p id="prev-resumo">Texto de resumo aqui.</p>
+                                    </div>
+                                    <div class="cv-section">
+                                        <h3><i class="fa-solid fa-graduation-cap"></i> Formação Acadêmica</h3>
+                                        <div class="cv-item">
+                                            <div class="cv-item-title-row">
+                                                <strong id="prev-curso">Curso</strong>
+                                                <span id="prev-ano">Ano</span>
+                                            </div>
+                                            <p id="prev-instituicao">Instituição</p>
+                                        </div>
+                                    </div>
+                                    <div class="cv-section" id="prev-section-exp">
+                                        <h3><i class="fa-solid fa-briefcase"></i> Experiência Profissional</h3>
+                                        <div class="cv-item">
+                                            <div class="cv-item-title-row">
+                                                <strong id="prev-exp-cargo">Cargo</strong>
+                                                <span id="prev-exp-periodo">Período</span>
+                                            </div>
+                                            <p id="prev-exp-empresa" class="cv-company">Empresa</p>
+                                            <p id="prev-exp-desc">Descrição das atividades.</p>
+                                        </div>
+                                    </div>
+                                    <div class="cv-section">
+                                        <h3><i class="fa-solid fa-screwdriver-wrench"></i> Habilidades e Idiomas</h3>
+                                        <div class="cv-skills-list" id="prev-habilidades">
+                                            <!-- Dynamic Skills List -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Opportunities Board -->
+        <section id="vagas" class="section-padding container">
+            <div class="section-header">
+                <span class="badge"><i class="fa-solid fa-briefcase"></i> Emprego</span>
+                <h2>Vagas de Empresas Inclusivas</h2>
+                <p>Oportunidades selecionadas de empresas parceiras que apoiam a diversidade e inclusão social.</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="job-filters-bar glass-card">
+                <div class="search-input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="job-search" placeholder="Buscar por cargo, empresa ou palavra-chave...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="todas">Todas</button>
+                    <button class="filter-btn" data-category="refugiados">Apoio a Refugiados</button>
+                    <button class="filter-btn" data-category="jovens">Jovem Aprendiz</button>
+                    <button class="filter-btn" data-category="remoto">Trabalho Remoto</button>
+                </div>
+            </div>
+
+            <!-- Job Cards Grid -->
+            <div class="jobs-grid" id="jobs-list">
+                <!-- Job 1 -->
+                <div class="glass-card job-card" data-category="refugiados">
+                    <div class="job-card-header">
+                        <div>
+                            <h3>Auxiliar de Logística</h3>
+                            <span class="company-name">LogiTec Solutions</span>
+                        </div>
+                        <span class="job-type-badge"><i class="fa-solid fa-clock"></i> Integral</span>
+                    </div>
+                    <p class="job-desc">
+                        Vaga destinada a projetos de inclusão. Não exige fluência avançada no idioma português. Oferecemos curso de língua portuguesa gratuito para contratados.
+                    </p>
+                    <div class="job-tags">
+                        <span class="tag tag-blue"><i class="fa-solid fa-passport"></i> Apoio a Refugiados</span>
+                        <span class="tag tag-green"><i class="fa-solid fa-location-dot"></i> Carapicuíba - SP</span>
+                    </div>
+                    <button class="btn btn-secondary btn-apply" onclick="openApplyModal('Auxiliar de Logística', 'LogiTec Solutions')">Candidatar-se</button>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="glass-card job-card" data-category="jovens">
+                    <div class="job-card-header">
+                        <div>
+                            <h3>Assistente Administrativo Aprendiz</h3>
+                            <span class="company-name">Varejo Global</span>
+                        </div>
+                        <span class="job-type-badge"><i class="fa-solid fa-calendar-day"></i> Meio Período</span>
+                    </div>
+                    <p class="job-desc">
+                        Oportunidade para jovens indígenas e de minorias sociais iniciarem no mercado de trabalho administrativo. Treinamento completo na empresa.
+                    </p>
+                    <div class="job-tags">
+                        <span class="tag tag-purple"><i class="fa-solid fa-graduation-cap"></i> Jovem Aprendiz</span>
+                        <span class="tag tag-green"><i class="fa-solid fa-location-dot"></i> Osasco - SP</span>
+                    </div>
+                    <button class="btn btn-secondary btn-apply" onclick="openApplyModal('Assistente Administrativo Aprendiz', 'Varejo Global')">Candidatar-se</button>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="glass-card job-card" data-category="remoto">
+                    <div class="job-card-header">
+                        <div>
+                            <h3>Atendente de Suporte Técnico</h3>
+                            <span class="company-name">Conecta Soft</span>
+                        </div>
+                        <span class="job-type-badge"><i class="fa-solid fa-house-laptop"></i> Remoto</span>
+                    </div>
+                    <p class="job-desc">
+                        Atendimento ao cliente online via chat. Ambiente acolhedor para todas as identidades de gênero. Fornecemos equipamento de trabalho.
+                    </p>
+                    <div class="job-tags">
+                        <span class="tag tag-orange"><i class="fa-solid fa-house-laptop"></i> Trabalho Remoto</span>
+                        <span class="tag tag-pink"><i class="fa-solid fa-transgender"></i> LGBTQIA+ Friendly</span>
+                    </div>
+                    <button class="btn btn-secondary btn-apply" onclick="openApplyModal('Atendente de Suporte Técnico', 'Conecta Soft')">Candidatar-se</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container footer-content">
+                <div class="footer-brand">
+                    <h3>ConectaInclusão</h3>
+                    <p>Sistemas de Informação a serviço do protagonismo social.</p>
+                </div>
+                <div class="footer-info">
+                    <p>Atividade de Extensão Universitária - Estácio</p>
+                    <p>Desenvolvido por <strong>João Carlos de Souza Santos</strong></p>
+                    <p>Disciplina: Sistemas de Informação e Sociedade (2026)</p>
+                </div>
+            </div>
+            <div class="footer-bar text-center">
+                <p>&copy; 2026 ConectaInclusão. Hospedado publicamente no GitHub.</p>
+            </div>
+        </footer>
+
+        <!-- Application Modal -->
+        <div id="apply-modal" class="modal-overlay hidden">
+            <div class="glass-card modal-content">
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+                <div class="modal-body" id="modal-content-area">
+                    <div class="success-icon-animation">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h2>Candidatura Enviada!</h2>
+                    <p>Seu currículo gerado foi anexado e enviado com sucesso para a vaga de <strong id="modal-vaga">Vaga</strong> na empresa <strong id="modal-empresa">Empresa</strong>.</p>
+                    <button class="btn btn-primary" onclick="closeApplyModal()">Entendido</button>
+                </div>
+            </div>
+        </div>
+
+    <!-- JavaScript File -->
+    <script src="app.js"></script>
+</body>
+</html>
