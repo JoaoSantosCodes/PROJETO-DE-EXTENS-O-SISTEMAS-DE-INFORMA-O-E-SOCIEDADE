@@ -219,6 +219,14 @@ const modalEmpresa = document.getElementById('modal-empresa');
 const modalContentArea = document.getElementById('modal-content-area');
 
 function openApplyModal(vaga, empresa) {
+    // Check if the user is logged in
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("Por favor, faça login ou cadastre-se para se candidatar às vagas!");
+        openAuthModal();
+        return;
+    }
+
     // Check if the user created a CV first to guide them (social literacy concept)
     if (!resumeGeneratedData) {
         alert("Por favor, preencha o formulário e crie seu currículo na seção 'Criar Currículo' antes de se candidatar!");
@@ -259,3 +267,203 @@ if (applyModal) {
         }
     });
 }
+
+/* ==========================================================================
+   AUTHENTICATION LOGIC (API & SESSIONS)
+   ========================================================================== */
+const authModal = document.getElementById('auth-modal');
+const btnLoginTrigger = document.getElementById('btn-login-trigger');
+const userSessionWrapper = document.getElementById('user-session-wrapper');
+const userNameDisplay = document.getElementById('user-name-display');
+const btnLogoutTrigger = document.getElementById('btn-logout-trigger');
+const authModalCloseBtn = document.getElementById('auth-modal-close-btn');
+
+const tabLoginBtn = document.getElementById('tab-login-btn');
+const tabRegisterBtn = document.getElementById('tab-register-btn');
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+const loginError = document.getElementById('login-error');
+const registerError = document.getElementById('register-error');
+
+function openAuthModal() {
+    authModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    switchTab('login');
+}
+
+function closeAuthModal() {
+    authModal.classList.add('hidden');
+    document.body.style.overflow = '';
+    // Clear forms and errors
+    loginForm.reset();
+    registerForm.reset();
+    loginError.classList.add('hidden');
+    registerError.classList.add('hidden');
+}
+
+function switchTab(tab) {
+    if (tab === 'login') {
+        tabLoginBtn.classList.add('active');
+        tabRegisterBtn.classList.remove('active');
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+    } else {
+        tabRegisterBtn.classList.add('active');
+        tabLoginBtn.classList.remove('active');
+        registerForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+    }
+}
+
+// Bind auth UI events
+if (btnLoginTrigger) btnLoginTrigger.addEventListener('click', openAuthModal);
+if (authModalCloseBtn) authModalCloseBtn.addEventListener('click', closeAuthModal);
+if (tabLoginBtn) tabLoginBtn.addEventListener('click', () => switchTab('login'));
+if (tabRegisterBtn) tabRegisterBtn.addEventListener('click', () => switchTab('register'));
+
+// Close if clicking outside the auth modal
+if (authModal) {
+    authModal.addEventListener('click', (e) => {
+        if (e.target === authModal) {
+            closeAuthModal();
+        }
+    });
+}
+
+// Update UI based on user authentication state
+function checkSession() {
+    const token = localStorage.getItem('token');
+    const userStr = localStorage.getItem('user');
+
+    if (token && userStr) {
+        try {
+            const user = JSON.parse(userStr);
+            userNameDisplay.innerHTML = `<i class="fa-solid fa-user"></i> Olá, ${user.nome.split(' ')[0]}`;
+            btnLoginTrigger.classList.add('hidden');
+            userSessionWrapper.classList.remove('hidden');
+        } catch (e) {
+            clearSession();
+        }
+    } else {
+        btnLoginTrigger.classList.remove('hidden');
+        userSessionWrapper.classList.add('hidden');
+    }
+}
+
+function clearSession() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    checkSession();
+}
+
+if (btnLogoutTrigger) {
+    btnLogoutTrigger.addEventListener('click', () => {
+        clearSession();
+        // Clear generated CV state on logout
+        resumeGeneratedData = null;
+        btnPrintCv.setAttribute('disabled', 'true');
+        emptyPreviewMsg.classList.remove('hidden');
+        cvPreviewContent.classList.add('hidden');
+        cvForm.reset();
+    });
+}
+
+// 1. Submit Registration Form
+if (registerForm) {
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        registerError.classList.add('hidden');
+
+        const nome = document.getElementById('reg-nome').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const senha = document.getElementById('reg-senha').value;
+
+        try {
+            const response = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nome, email, senha })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Erro ao realizar cadastro.');
+            }
+
+            // Save session
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            // Auto-fill CV generator name and email
+            inputNome.value = data.user.nome;
+            inputEmail.value = data.user.email;
+
+            // Success feedback
+            alert(data.message || 'Cadastro realizado!');
+            closeAuthModal();
+            checkSession();
+
+        } catch (err) {
+            registerError.textContent = err.message;
+            registerError.classList.remove('hidden');
+        }
+    });
+}
+
+// 2. Submit Login Form
+if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loginError.classList.add('hidden');
+
+        const email = document.getElementById('login-email').value.trim();
+        const senha = document.getElementById('login-senha').value;
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, senha })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Erro ao realizar login.');
+            }
+
+            // Save session
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            // Auto-fill CV generator name and email
+            inputNome.value = data.user.nome;
+            inputEmail.value = data.user.email;
+
+            // Success feedback
+            alert(data.message || 'Login realizado!');
+            closeAuthModal();
+            checkSession();
+
+        } catch (err) {
+            loginError.textContent = err.message;
+            loginError.classList.remove('hidden');
+        }
+    });
+}
+
+// Run session check on page load
+document.addEventListener('DOMContentLoaded', () => {
+    checkSession();
+    
+    // Auto-fill CV if user is already logged in
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+        try {
+            const user = JSON.parse(userStr);
+            inputNome.value = user.nome;
+            inputEmail.value = user.email;
+        } catch (e) {}
+    }
+});

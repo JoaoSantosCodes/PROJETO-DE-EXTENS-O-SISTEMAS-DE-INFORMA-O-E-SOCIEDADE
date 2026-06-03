@@ -1,0 +1,12 @@
+# Dependências de Pacotes
+node_modules/
+package-lock.json
+
+# Segredos locais e configurações de ambiente
+.env
+
+# Logs e arquivos temporários do sistema
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store

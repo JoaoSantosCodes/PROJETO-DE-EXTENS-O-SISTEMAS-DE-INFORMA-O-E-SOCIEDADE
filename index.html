@@ -32,7 +32,19 @@
                 <button id="theme-toggle" class="btn-icon" aria-label="Alternar modo escuro/claro" title="Alternar Modo Escuro/Claro">
                     <i class="fa-solid fa-moon"></i>
                 </button>
-                <button class="btn btn-primary btn-nav-cta" onclick="location.href='#gerador-curriculo'">Começar Agora</button>
+                
+                <!-- Authentication Triggers -->
+                <button class="btn btn-primary btn-nav-cta" id="btn-login-trigger">
+                    <i class="fa-solid fa-user-lock"></i> Entrar / Cadastrar
+                </button>
+                
+                <div class="user-session-wrapper hidden" id="user-session-wrapper">
+                    <span id="user-name-display">Olá, Usuário</span>
+                    <button class="btn btn-secondary btn-sm" id="btn-logout-trigger">
+                        <i class="fa-solid fa-right-from-bracket"></i> Sair
+                    </button>
+                </div>
+
                 <button id="mobile-menu-toggle" class="btn-icon mobile-only" aria-label="Abrir Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -449,6 +461,51 @@
                 </div>
             </div>
         </div>
+
+    <!-- Auth Modal (Login / Register) -->
+    <div id="auth-modal" class="modal-overlay hidden">
+        <div class="glass-card auth-modal-content">
+            <button class="modal-close" id="auth-modal-close-btn">&times;</button>
+            
+            <!-- Tab Headers -->
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" id="tab-login-btn">Entrar</button>
+                <button class="auth-tab-btn" id="tab-register-btn">Cadastrar</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <div class="input-group">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" placeholder="Ex: seuemail@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" placeholder="Sua senha" required>
+                </div>
+                <div class="auth-error-msg hidden" id="login-error"></div>
+                <button type="submit" class="btn btn-primary btn-full-width">Acessar Conta</button>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form hidden">
+                <div class="input-group">
+                    <label for="reg-nome">Nome Completo</label>
+                    <input type="text" id="reg-nome" placeholder="Ex: João Silva" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-email">E-mail</label>
+                    <input type="email" id="reg-email" placeholder="Ex: seuemail@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-senha">Senha (mínimo 6 caracteres)</label>
+                    <input type="password" id="reg-senha" placeholder="Crie uma senha" required>
+                </div>
+                <div class="auth-error-msg hidden" id="register-error"></div>
+                <button type="submit" class="btn btn-primary btn-full-width">Criar Minha Conta</button>
+            </form>
+        </div>
+    </div>
 
     <!-- JavaScript File -->
     <script src="app.js"></script>

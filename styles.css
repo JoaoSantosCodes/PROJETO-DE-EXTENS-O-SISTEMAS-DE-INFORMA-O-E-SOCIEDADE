@@ -1221,3 +1221,84 @@ h1, h2, h3, h4 {
         background-color: #f8fafc !important;
     }
 }
+
+/* ==========================================================================
+   AUTHENTICATION STYLES (LOGIN & REGISTER)
+   ========================================================================== */
+.auth-modal-content {
+    width: 90%;
+    max-width: 420px;
+    padding: 32px;
+    position: relative;
+    animation: modalReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 24px;
+}
+
+.auth-tab-btn {
+    flex: 1;
+    background: transparent;
+    padding: 12px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.auth-tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.auth-tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.auth-form button[type="submit"] {
+    margin-top: 12px;
+}
+
+.auth-error-msg {
+    color: #ef4444;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: var(--radius-sm);
+    line-height: 1.4;
+}
+
+.user-session-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#user-name-display {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-secondary);
+    background: rgba(0, 242, 254, 0.1);
+    padding: 6px 12px;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+.light-theme #user-name-display {
+    background: rgba(0, 180, 216, 0.08);
+}
