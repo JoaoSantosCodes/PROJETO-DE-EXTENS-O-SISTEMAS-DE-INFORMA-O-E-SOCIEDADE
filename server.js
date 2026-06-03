@@ -18,13 +18,28 @@ let useDb = true;
 const mockUsersDb = [];
 
 // Configure PostgreSQL connection pool
-const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_DATABASE,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-});
+let poolConfig = {};
+
+if (process.env.POSTGRES_URL) {
+    // Vercel Postgres or other remote connection string providers
+    poolConfig = {
+        connectionString: process.env.POSTGRES_URL,
+        ssl: {
+            rejectUnauthorized: false
+        }
+    };
+} else {
+    // Local configuration
+    poolConfig = {
+        user: process.env.DB_USER,
+        host: process.env.DB_HOST,
+        database: process.env.DB_DATABASE,
+        password: process.env.DB_PASSWORD,
+        port: process.env.DB_PORT || 5432,
+    };
+}
+
+const pool = new Pool(poolConfig);
 
 // Test connection
 pool.connect((err, client, release) => {
